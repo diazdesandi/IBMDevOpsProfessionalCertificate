@@ -1,0 +1,1 @@
+1. Use option `--stop` to stop running the tests at the first failing test case.
