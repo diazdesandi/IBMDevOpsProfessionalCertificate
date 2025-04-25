@@ -19,3 +19,7 @@ docker run -it --rm \
 ```
 sudo pip install -r requirements.txt 
 ```
+
+Note:
+- Add missing packages like webdriver to requirements.txt in order to correctly run Selenium
+- Install Mozilla Firefox
