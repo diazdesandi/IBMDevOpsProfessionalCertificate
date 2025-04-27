@@ -3,6 +3,8 @@ Environment for Behave Testing
 """
 from os import getenv
 from selenium import webdriver
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
 
 WAIT_SECONDS = int(getenv('WAIT_SECONDS', '60'))
 BASE_URL = getenv('BASE_URL', 'http://localhost:8080')
@@ -15,7 +17,8 @@ def before_all(context):
     # Instantiate the Firefox WebDriver with GeckoDriver
     options = webdriver.FirefoxOptions()
     options.add_argument("--headless")
-    context.driver = webdriver.Firefox(options=options)
+    service = FirefoxService(GeckoDriverManager().install())
+    context.driver = webdriver.Firefox(service=service,options=options)
     context.driver.implicitly_wait(context.wait_seconds)
 
 def after_all(context):
